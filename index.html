@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>יהודה רוזנקרנץ — תוכן ורשתות</title>
+  <style>
+    :root {
+      --bg: #0f0f13;
+      --surface: #1a1a24;
+      --surface2: #22222f;
+      --border: #2e2e42;
+      --accent: #7c5cfc;
+      --accent2: #f05fa3;
+      --text: #e8e8f0;
+      --muted: #7a7a9a;
+      --radius: 14px;
+      --twitter: #1d9bf0;
+      --linkedin: #0a66c2;
+      --instagram: #e1306c;
+      --facebook: #1877f2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', 'Arial Hebrew', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      direction: rtl;
+    }
+    header {
+      background: linear-gradient(135deg, #1a1a24 0%, #12121a 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 32px 24px 24px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+    header p { color: var(--muted); font-size: 0.95rem; }
+    .filters {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 20px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15,15,19,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .filter-btn {
+      padding: 7px 18px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .filter-btn:hover { border-color: var(--accent); color: var(--text); }
+    .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+    .filter-btn[data-platform="twitter"].active  { background: var(--twitter); border-color: var(--twitter); }
+    .filter-btn[data-platform="linkedin"].active { background: var(--linkedin); border-color: var(--linkedin); }
+    .filter-btn[data-platform="instagram"].active{ background: var(--instagram); border-color: var(--instagram); }
+    .filter-btn[data-platform="facebook"].active { background: var(--facebook); border-color: var(--facebook); }
+    .stats {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      padding: 20px 16px 10px;
+      flex-wrap: wrap;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 22px;
+      text-align: center;
+      min-width: 100px;
+    }
+    .stat-card .num { font-size: 1.6rem; font-weight: 800; color: var(--accent); }
+    .stat-card .label { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      padding: 24px 20px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: default;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(124,92,252,0.15); border-color: var(--accent); }
+    .card-image { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: var(--surface2); display: block; }
+    .card-image.square { aspect-ratio: 1/1; }
+    .card-image-placeholder { width: 100%; aspect-ratio: 16/9; background: var(--surface2); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
+    .card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+    .card-meta { display: flex; align-items: center; gap: 10px; justify-content: space-between; }
+    .platform-badge { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
+    .platform-badge.twitter  { background: rgba(29,155,240,0.15); color: var(--twitter); }
+    .platform-badge.linkedin { background: rgba(10,102,194,0.15); color: var(--linkedin); }
+    .platform-badge.instagram{ background: rgba(225,48,108,0.15); color: var(--instagram); }
+    .platform-badge.facebook { background: rgba(24,119,242,0.15); color: var(--facebook); }
+    .card-date { font-size: 0.75rem; color: var(--muted); }
+    .card-text { font-size: 0.92rem; line-height: 1.6; color: var(--text); flex: 1; white-space: pre-wrap; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; }
+    .card-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--accent); text-decoration: none; margin-top: auto; }
+    .card-link:hover { text-decoration: underline; }
+    .empty { text-align: center; padding: 80px 20px; color: var(--muted); grid-column: 1/-1; }
+    .empty-icon { font-size: 3rem; margin-bottom: 12px; }
+    .edit-notice { text-align: center; padding: 18px; background: var(--surface); border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
+    .edit-notice a { color: var(--accent); text-decoration: none; }
+    .edit-notice a:hover { text-decoration: underline; }
+    .loading { text-align: center; padding: 80px; color: var(--muted); font-size: 1rem; grid-column: 1/-1; }
+    .spinner { width: 36px; height: 36px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    footer { text-align: center; padding: 32px; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+<header>
+  <h1>יהודה רוזנקרנץ</h1>
+  <p>כל התוכן שלי ברשת — במקום אחד</p>
+</header>
+<div class="filters" id="filters">
+  <button class="filter-btn active" data-platform="all">הכל</button>
+  <button class="filter-btn" data-platform="twitter">🐦 Twitter</button>
+  <button class="filter-btn" data-platform="linkedin">💼 LinkedIn</button>
+  <button class="filter-btn" data-platform="instagram">📸 Instagram</button>
+  <button class="filter-btn" data-platform="facebook">📘 Facebook</button>
+</div>
+<div class="stats" id="stats"></div>
+<div class="grid" id="grid">
+  <div class="loading"><div class="spinner"></div>טוען פוסטים...</div>
+</div>
+<div class="edit-notice">
+  לעריכת תוכן — פתח את <a href="https://docs.google.com/spreadsheets/d/1gQB5iF-cwi1-26yCg1H7VcRsbNAUQ0Ugenn6aI9Y1n0/edit" target="_blank">Google Sheets</a> ורענן את הדף
+</div>
+<footer><p>© 2026 יהודה רוזנקרנץ</p></footer>
+<script>
+const SHEET_ID = "1gQB5iF-cwi1-26yCg1H7VcRsbNAUQ0Ugenn6aI9Y1n0";
+const SHEET_NAME = "פוסטים";
+const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(SHEET_NAME)}`;
+const PLATFORM_ICONS = { twitter:"🐦", linkedin:"💼", instagram:"📸", facebook:"📘" };
+let allPosts = [], activeFilter = "all";
+function parseCSV(text) {
+  const rows = []; let row = [], field = "", inQuote = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i], nc = text[i+1];
+    if (inQuote) {
+      if (c === '"' && nc === '"') { field += '"'; i++; }
+      else if (c === '"') inQuote = false;
+      else field += c;
+    } else {
+      if (c === '"') inQuote = true;
+      else if (c === ',') { row.push(field.trim()); field = ""; }
+      else if (c === '\n' || c === '\r') {
+        if (c === '\r' && nc === '\n') i++;
+        row.push(field.trim()); field = "";
+        if (row.some(f => f)) rows.push(row);
+        row = [];
+      } else field += c;
+    }
+  }
+  if (field || row.length) { row.push(field.trim()); if (row.some(f=>f)) rows.push(row); }
+  return rows;
+}
+async function loadPosts() {
+  try {
+    const resp = await fetch(CSV_URL);
+    if (!resp.ok) throw new Error("fetch failed");
+    const text = await resp.text();
+    const rows = parseCSV(text);
+    if (rows.length < 2) { renderEmpty(); return; }
+    const headers = rows[0].map(h => h.toLowerCase().trim());
+    allPosts = rows.slice(1).map(r => { const o = {}; headers.forEach((h,i) => o[h]=r[i]||""); return o; }).filter(p => p.text);
+    renderStats(); renderPosts();
+  } catch(e) {
+    document.getElementById("grid").innerHTML = '<div class="empty"><div class="empty-icon">⚠️</div><p>לא ניתן לטעון פוסטים.</p></div>';
+  }
+}
+function renderStats() {
+  const byP = {};
+  allPosts.forEach(p => { const pl=(p.platform||"").toLowerCase(); byP[pl]=(byP[pl]||0)+1; });
+  let h = `<div class="stat-card"><div class="num">${allPosts.length}</div><div class="label">פוסטים</div></div>`;
+  Object.entries(byP).forEach(([pl,n]) => h += `<div class="stat-card"><div class="num">${n}</div><div class="label">${PLATFORM_ICONS[pl]||"📌"} ${pl}</div></div>`);
+  document.getElementById("stats").innerHTML = h;
+}
+function renderPosts() {
+  const filtered = activeFilter==="all" ? allPosts : allPosts.filter(p=>(p.platform||"").toLowerCase()===activeFilter);
+  if (!filtered.length) { document.getElementById("grid").innerHTML='<div class="empty"><div class="empty-icon">📭</div><p>אין פוסטים בקטגוריה זו</p></div>'; return; }
+  document.getElementById("grid").innerHTML = filtered.map(p => {
+    const pl=(p.platform||"").toLowerCase(), sq=pl==="instagram";
+    const img = p.image_url
+      ? `<img class="card-image${sq?' square':''}" src="${p.image_url}" alt="" loading="lazy" onerror="this.style.display='none'" />`
+      : `<div class="card-image-placeholder">${PLATFORM_ICONS[pl]||"📌"}</div>`;
+    return `<div class="card" data-platform="${pl}">${img}<div class="card-body"><div class="card-meta"><span class="platform-badge ${pl}">${PLATFORM_ICONS[pl]||"📌"} ${pl}</span><span class="card-date">${p.date||""}</span></div><div class="card-text">${(p.text||"").replace(/</g,"&lt;").replace(/>/g,"&gt;")}</div>${p.link?`<a class="card-link" href="${p.link}" target="_blank" rel="noopener">צפה בפוסט המקורי →</a>`:""}</div></div>`;
+  }).join("");
+}
+document.getElementById("filters").addEventListener("click", e => {
+  const btn = e.target.closest(".filter-btn"); if (!btn) return;
+  document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active"); activeFilter=btn.dataset.platform; renderPosts();
+});
+loadPosts();
+</script>
+</body>
+</html>
