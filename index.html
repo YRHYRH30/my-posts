@@ -28,6 +28,8 @@
       min-height: 100vh;
       direction: rtl;
     }
+
+    /* HEADER */
     header {
       background: linear-gradient(135deg, #1a1a24 0%, #12121a 100%);
       border-bottom: 1px solid var(--border);
@@ -42,7 +44,12 @@
       -webkit-text-fill-color: transparent;
       margin-bottom: 6px;
     }
-    header p { color: var(--muted); font-size: 0.95rem; }
+    header p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* FILTERS */
     .filters {
       display: flex;
       gap: 10px;
@@ -68,11 +75,18 @@
       font-family: inherit;
     }
     .filter-btn:hover { border-color: var(--accent); color: var(--text); }
-    .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+    .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      font-weight: 600;
+    }
     .filter-btn[data-platform="twitter"].active  { background: var(--twitter); border-color: var(--twitter); }
     .filter-btn[data-platform="linkedin"].active { background: var(--linkedin); border-color: var(--linkedin); }
     .filter-btn[data-platform="instagram"].active{ background: var(--instagram); border-color: var(--instagram); }
     .filter-btn[data-platform="facebook"].active { background: var(--facebook); border-color: var(--facebook); }
+
+    /* STATS */
     .stats {
       display: flex;
       gap: 16px;
@@ -88,8 +102,18 @@
       text-align: center;
       min-width: 100px;
     }
-    .stat-card .num { font-size: 1.6rem; font-weight: 800; color: var(--accent); }
-    .stat-card .label { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+    .stat-card .num {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .stat-card .label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* GRID */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -98,6 +122,8 @@
       max-width: 1300px;
       margin: 0 auto;
     }
+
+    /* CARD */
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -108,37 +134,162 @@
       display: flex;
       flex-direction: column;
     }
-    .card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(124,92,252,0.15); border-color: var(--accent); }
-    .card-image { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: var(--surface2); display: block; }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(124,92,252,0.15);
+      border-color: var(--accent);
+    }
+    .card-image {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      background: var(--surface2);
+      display: block;
+    }
     .card-image.square { aspect-ratio: 1/1; }
-    .card-image-placeholder { width: 100%; aspect-ratio: 16/9; background: var(--surface2); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
-    .card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
-    .card-meta { display: flex; align-items: center; gap: 10px; justify-content: space-between; }
-    .platform-badge { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
+    .card-image-placeholder {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--surface2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+    }
+    .card-body {
+      padding: 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: space-between;
+    }
+    .platform-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
     .platform-badge.twitter  { background: rgba(29,155,240,0.15); color: var(--twitter); }
     .platform-badge.linkedin { background: rgba(10,102,194,0.15); color: var(--linkedin); }
     .platform-badge.instagram{ background: rgba(225,48,108,0.15); color: var(--instagram); }
     .platform-badge.facebook { background: rgba(24,119,242,0.15); color: var(--facebook); }
-    .card-date { font-size: 0.75rem; color: var(--muted); }
-    .card-text { font-size: 0.92rem; line-height: 1.6; color: var(--text); flex: 1; white-space: pre-wrap; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; }
-    .card-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--accent); text-decoration: none; margin-top: auto; }
+    .card-date {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .card-text {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--text);
+      flex: 1;
+      white-space: pre-wrap;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+    }
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: var(--accent);
+      text-decoration: none;
+      margin-top: auto;
+    }
     .card-link:hover { text-decoration: underline; }
-    .empty { text-align: center; padding: 80px 20px; color: var(--muted); grid-column: 1/-1; }
+
+    /* EMPTY */
+    .empty {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--muted);
+      grid-column: 1/-1;
+    }
     .empty-icon { font-size: 3rem; margin-bottom: 12px; }
-    .edit-notice { text-align: center; padding: 18px; background: var(--surface); border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
+
+    /* EDIT NOTICE */
+    .edit-notice {
+      text-align: center;
+      padding: 18px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
     .edit-notice a { color: var(--accent); text-decoration: none; }
     .edit-notice a:hover { text-decoration: underline; }
-    .loading { text-align: center; padding: 80px; color: var(--muted); font-size: 1rem; grid-column: 1/-1; }
-    .spinner { width: 36px; height: 36px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px; }
+
+    /* LOADING */
+    .loading {
+      text-align: center;
+      padding: 80px;
+      color: var(--muted);
+      font-size: 1rem;
+      grid-column: 1/-1;
+    }
+    .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 16px;
+    }
     @keyframes spin { to { transform: rotate(360deg); } }
-    footer { text-align: center; padding: 32px; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
+
+    footer {
+      text-align: center;
+      padding: 32px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* EDIT BUTTON */
+    .edit-fab {
+      position: fixed;
+      bottom: 28px;
+      left: 28px;
+      z-index: 999;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 22px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      font-size: 0.92rem;
+      font-weight: 700;
+      font-family: inherit;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 24px rgba(124,92,252,0.45);
+      transition: transform 0.18s, box-shadow 0.18s;
+    }
+    .edit-fab:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(124,92,252,0.6);
+    }
   </style>
 </head>
 <body>
+
 <header>
   <h1>יהודה רוזנקרנץ</h1>
   <p>כל התוכן שלי ברשת — במקום אחד</p>
 </header>
+
 <div class="filters" id="filters">
   <button class="filter-btn active" data-platform="all">הכל</button>
   <button class="filter-btn" data-platform="twitter">🐦 Twitter</button>
@@ -146,42 +297,72 @@
   <button class="filter-btn" data-platform="instagram">📸 Instagram</button>
   <button class="filter-btn" data-platform="facebook">📘 Facebook</button>
 </div>
+
 <div class="stats" id="stats"></div>
+
 <div class="grid" id="grid">
-  <div class="loading"><div class="spinner"></div>טוען פוסטים...</div>
+  <div class="loading">
+    <div class="spinner"></div>
+    טוען פוסטים...
+  </div>
 </div>
+
 <div class="edit-notice">
-  לעריכת תוכן — פתח את <a href="https://docs.google.com/spreadsheets/d/1gQB5iF-cwi1-26yCg1H7VcRsbNAUQ0Ugenn6aI9Y1n0/edit" target="_blank">Google Sheets</a> ורענן את הדף
+  לעריכת תוכן — פתח את <a href="https://docs.google.com/spreadsheets/d/1gQB5iF-cwi1-26yCg1H7VcRsbNAUQ0Ugenn6aI9Y1n0/edit" target="_blank" id="sheet-link">Google Sheets</a>
+  ורענן את הדף
 </div>
-<footer><p>© 2026 יהודה רוזנקרנץ</p></footer>
+
+<footer>
+  <p>© 2026 יהודה רוזנקרנץ</p>
+</footer>
+
+<a class="edit-fab" href="https://docs.google.com/spreadsheets/d/1gQB5iF-cwi1-26yCg1H7VcRsbNAUQ0Ugenn6aI9Y1n0/edit" target="_blank" rel="noopener">
+  ✏️ עריכה
+</a>
+
 <script>
+// =============================================
+// CONFIG — change SHEET_ID to your sheet ID
+// =============================================
 const SHEET_ID = "1gQB5iF-cwi1-26yCg1H7VcRsbNAUQ0Ugenn6aI9Y1n0";
 const SHEET_NAME = "פוסטים";
 const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(SHEET_NAME)}`;
-const PLATFORM_ICONS = { twitter:"🐦", linkedin:"💼", instagram:"📸", facebook:"📘" };
-let allPosts = [], activeFilter = "all";
+
+const PLATFORM_ICONS = {
+  twitter: "🐦",
+  linkedin: "💼",
+  instagram: "📸",
+  facebook: "📘"
+};
+
+let allPosts = [];
+let activeFilter = "all";
+
+// Parse CSV (handles quoted fields with commas/newlines)
 function parseCSV(text) {
-  const rows = []; let row = [], field = "", inQuote = false;
+  const rows = [];
+  let row = [], field = "", inQuote = false;
   for (let i = 0; i < text.length; i++) {
     const c = text[i], nc = text[i+1];
     if (inQuote) {
       if (c === '"' && nc === '"') { field += '"'; i++; }
-      else if (c === '"') inQuote = false;
-      else field += c;
+      else if (c === '"') { inQuote = false; }
+      else { field += c; }
     } else {
-      if (c === '"') inQuote = true;
+      if (c === '"') { inQuote = true; }
       else if (c === ',') { row.push(field.trim()); field = ""; }
       else if (c === '\n' || c === '\r') {
         if (c === '\r' && nc === '\n') i++;
         row.push(field.trim()); field = "";
         if (row.some(f => f)) rows.push(row);
         row = [];
-      } else field += c;
+      } else { field += c; }
     }
   }
   if (field || row.length) { row.push(field.trim()); if (row.some(f=>f)) rows.push(row); }
   return rows;
 }
+
 async function loadPosts() {
   try {
     const resp = await fetch(CSV_URL);
@@ -190,35 +371,83 @@ async function loadPosts() {
     const rows = parseCSV(text);
     if (rows.length < 2) { renderEmpty(); return; }
     const headers = rows[0].map(h => h.toLowerCase().trim());
-    allPosts = rows.slice(1).map(r => { const o = {}; headers.forEach((h,i) => o[h]=r[i]||""); return o; }).filter(p => p.text);
-    renderStats(); renderPosts();
+    allPosts = rows.slice(1).map(r => {
+      const obj = {};
+      headers.forEach((h, i) => obj[h] = r[i] || "");
+      return obj;
+    }).filter(p => p.text || p.תוכן);
+    renderStats();
+    renderPosts();
   } catch(e) {
-    document.getElementById("grid").innerHTML = '<div class="empty"><div class="empty-icon">⚠️</div><p>לא ניתן לטעון פוסטים.</p></div>';
+    document.getElementById("grid").innerHTML = `<div class="empty"><div class="empty-icon">⚠️</div><p>לא ניתן לטעון פוסטים. ודא שה-Google Sheet מפורסם לצפייה.</p></div>`;
   }
 }
+
 function renderStats() {
-  const byP = {};
-  allPosts.forEach(p => { const pl=(p.platform||"").toLowerCase(); byP[pl]=(byP[pl]||0)+1; });
-  let h = `<div class="stat-card"><div class="num">${allPosts.length}</div><div class="label">פוסטים</div></div>`;
-  Object.entries(byP).forEach(([pl,n]) => h += `<div class="stat-card"><div class="num">${n}</div><div class="label">${PLATFORM_ICONS[pl]||"📌"} ${pl}</div></div>`);
-  document.getElementById("stats").innerHTML = h;
+  const total = allPosts.length;
+  const byPlatform = {};
+  allPosts.forEach(p => {
+    const pl = (p.platform || p.פלטפורמה || "").toLowerCase();
+    byPlatform[pl] = (byPlatform[pl] || 0) + 1;
+  });
+  let html = `<div class="stat-card"><div class="num">${total}</div><div class="label">פוסטים</div></div>`;
+  Object.entries(byPlatform).forEach(([pl, n]) => {
+    html += `<div class="stat-card"><div class="num">${n}</div><div class="label">${PLATFORM_ICONS[pl]||"📌"} ${pl}</div></div>`;
+  });
+  document.getElementById("stats").innerHTML = html;
 }
+
 function renderPosts() {
-  const filtered = activeFilter==="all" ? allPosts : allPosts.filter(p=>(p.platform||"").toLowerCase()===activeFilter);
-  if (!filtered.length) { document.getElementById("grid").innerHTML='<div class="empty"><div class="empty-icon">📭</div><p>אין פוסטים בקטגוריה זו</p></div>'; return; }
+  const filtered = activeFilter === "all"
+    ? allPosts
+    : allPosts.filter(p => (p.platform || p.פלטפורמה || "").toLowerCase() === activeFilter);
+
+  if (!filtered.length) {
+    document.getElementById("grid").innerHTML = `<div class="empty"><div class="empty-icon">📭</div><p>אין פוסטים בקטגוריה זו</p></div>`;
+    return;
+  }
+
   document.getElementById("grid").innerHTML = filtered.map(p => {
-    const pl=(p.platform||"").toLowerCase(), sq=pl==="instagram";
-    const img = p.image_url
-      ? `<img class="card-image${sq?' square':''}" src="${p.image_url}" alt="" loading="lazy" onerror="this.style.display='none'" />`
-      : `<div class="card-image-placeholder">${PLATFORM_ICONS[pl]||"📌"}</div>`;
-    return `<div class="card" data-platform="${pl}">${img}<div class="card-body"><div class="card-meta"><span class="platform-badge ${pl}">${PLATFORM_ICONS[pl]||"📌"} ${pl}</span><span class="card-date">${p.date||""}</span></div><div class="card-text">${(p.text||"").replace(/</g,"&lt;").replace(/>/g,"&gt;")}</div>${p.link?`<a class="card-link" href="${p.link}" target="_blank" rel="noopener">צפה בפוסט המקורי →</a>`:""}</div></div>`;
+    const platform = (p.platform || p.פלטפורמה || "").toLowerCase();
+    const text     = p.text || p.תוכן || "";
+    const imageUrl = p.image_url || p["קישור תמונה"] || "";
+    const link     = p.link || p.קישור || "";
+    const date     = p.date || p.תאריך || "";
+    const isSquare = platform === "instagram";
+
+    let imageHtml = "";
+    if (imageUrl) {
+      imageHtml = `<img class="card-image${isSquare?" square":""}" src="${imageUrl}" alt="תמונת פוסט" loading="lazy" onerror="this.style.display='none'" />`;
+    } else {
+      imageHtml = `<div class="card-image-placeholder">${PLATFORM_ICONS[platform]||"📌"}</div>`;
+    }
+
+    return `
+      <div class="card" data-platform="${platform}">
+        ${imageHtml}
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="platform-badge ${platform}">${PLATFORM_ICONS[platform]||"📌"} ${platform}</span>
+            <span class="card-date">${date}</span>
+          </div>
+          <div class="card-text">${text.replace(/</g,"&lt;").replace(/>/g,"&gt;")}</div>
+          ${link ? `<a class="card-link" href="${link}" target="_blank" rel="noopener">צפה בפוסט המקורי →</a>` : ""}
+        </div>
+      </div>`;
   }).join("");
 }
+
+// Filters
 document.getElementById("filters").addEventListener("click", e => {
-  const btn = e.target.closest(".filter-btn"); if (!btn) return;
-  document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
-  btn.classList.add("active"); activeFilter=btn.dataset.platform; renderPosts();
+  const btn = e.target.closest(".filter-btn");
+  if (!btn) return;
+  document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  activeFilter = btn.dataset.platform;
+  renderPosts();
 });
+
+// Init
 loadPosts();
 </script>
 </body>
