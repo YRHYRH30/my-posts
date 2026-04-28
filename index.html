@@ -369,7 +369,10 @@ async function loadPosts() {
     if (!resp.ok) throw new Error("fetch failed");
     const text = await resp.text();
     const rows = parseCSV(text);
-    if (rows.length < 2) { renderEmpty(); return; }
+    if (rows.length < 2) {
+      document.getElementById("grid").innerHTML = `<div class="empty"><div class="empty-icon">📭</div><p>הגיליון עדיין ריק. הוסף פוסטים דרך כפתור העריכה.</p></div>`;
+      return;
+    }
     const headers = rows[0].map(h => h.toLowerCase().trim());
     allPosts = rows.slice(1).map(r => {
       const obj = {};
